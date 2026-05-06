@@ -36,7 +36,7 @@ function Logo() {
   return (
     <a href="#anasayfa" className="flex items-center gap-3" aria-label="Metakent İnşaat Anasayfa">
       {!imageFailed ? (
-        <span className="relative h-12 w-32 overflow-hidden rounded-md bg-white p-1 sm:w-40">
+        <span className="relative h-16 w-44 overflow-hidden sm:h-20 sm:w-56">
           <Image
             src={logoSrc}
             alt="Metakent İnşaat Logo"
