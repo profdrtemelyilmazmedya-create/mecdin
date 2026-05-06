@@ -61,9 +61,6 @@ export function ProjectsSection() {
                           >
                             {project.status}
                           </span>
-                          <span className="rounded bg-black/60 px-2.5 py-1 text-xs font-semibold text-white/80 backdrop-blur">
-                            {project.category}
-                          </span>
                         </div>
                         <h4 className="text-2xl font-black leading-tight text-white">
                           {project.name}
@@ -143,10 +140,15 @@ function ProjectModal({
             <h3 className="mt-3 text-3xl font-black text-white sm:text-5xl">
               {project.name}
             </h3>
-            <p className="mt-2 flex items-center gap-2 text-white/75">
+            <a
+              href={project.mapUrl}
+              target="_blank"
+              rel="noreferrer"
+              className="mt-2 inline-flex items-center gap-2 text-white/75 transition hover:text-white"
+            >
               <MapPin size={18} className={isOngoing ? "text-emerald-400" : "text-ember"} />
               {project.location}
-            </p>
+            </a>
           </div>
         </div>
 
@@ -166,18 +168,28 @@ function ProjectModal({
 
           <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-1">
             {[
-              ["Kategori", project.category],
+              ["Kategori", `${project.category} / ${project.name}`],
               ["Konum", project.location],
-              ["Durum", project.status],
+              ["Durum", project.statusDetail ?? project.status],
               ["Yapı Yaklaşımı", isOngoing ? "Modern proje geliştirme" : "Tamamlanan referans proje"],
-              ["Öne Çıkan", "Güvenli yapı, estetik mimari"],
               ["Kullanım", isPublic ? "Kamusal kullanım" : "Yaşam alanı"]
             ].map(([label, value]) => (
               <div key={label} className="rounded-md border border-white/10 bg-white/[0.055] p-4">
                 <p className="text-xs font-bold uppercase tracking-[0.16em] text-white/40">
                   {label}
                 </p>
-                <p className="mt-2 font-semibold text-white">{value}</p>
+                {label === "Konum" ? (
+                  <a
+                    href={project.mapUrl}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="mt-2 inline-flex font-semibold text-white underline decoration-ember/60 underline-offset-4 transition hover:text-ember"
+                  >
+                    {value}
+                  </a>
+                ) : (
+                  <p className="mt-2 font-semibold text-white">{value}</p>
+                )}
               </div>
             ))}
           </div>
@@ -185,7 +197,7 @@ function ProjectModal({
 
         <div className="border-t border-white/10 p-6 sm:p-8">
           <div className="grid gap-3 sm:grid-cols-3">
-            {["Kaliteli malzeme", "Zamanında teslim", "Kurumsal süreç yönetimi"].map((item) => (
+            {(project.specs ?? ["Kaliteli malzeme", "Zamanında teslim", "Kurumsal süreç yönetimi"]).map((item) => (
               <div
                 key={item}
                 className="flex items-center gap-2 rounded-md bg-white/[0.055] px-4 py-3 text-sm font-semibold text-white/85"
