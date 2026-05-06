@@ -6,7 +6,7 @@ export const whatsappGeneralUrl =
 
 export const site = {
   brand: "Metakent İnşaat",
-  logo: "/logo.png",
+  logo: "/logo-web.png",
   fallbackLogo: "/logo-02.png",
   hero: {
     title: "Metakent İnşaat",
@@ -65,6 +65,10 @@ export const site = {
           category: "Biten Projelerimiz",
           location: "Büyükçekmece / İstanbul",
           status: "Tamamlandı",
+          statusDetail: "Tamamlandı - 2005",
+          mapUrl:
+            "https://www.google.com/maps/search/?api=1&query=B%C3%BCy%C3%BCk%C3%A7ekmece%20%C4%B0stanbul",
+          specs: ["3+1 128 m2 daireler", "Geniş balkon kullanımı", "Laminat parke", "Ankastre mutfak altyapısı"],
           description:
             "Aile yaşamına uygun planlanan, modern cephe dili ve fonksiyonel yaşam alanlarıyla öne çıkan konut projesi.",
           image:
@@ -75,6 +79,10 @@ export const site = {
           category: "Biten Projelerimiz",
           location: "İstanbul",
           status: "Tamamlandı",
+          statusDetail: "Tamamlandı - 2012",
+          mapUrl:
+            "https://www.google.com/maps/search/?api=1&query=%C4%B0stanbul",
+          specs: ["2+1 94 m2 daireler", "3+1 118 m2 seçenek", "Isı ve ses yalıtımı", "Kapalı otopark planlaması"],
           description:
             "Şehir yaşamını konforlu ve güvenli bir yapıyla buluşturan modern konut projesi.",
           image:
@@ -85,6 +93,10 @@ export const site = {
           category: "Biten Projelerimiz",
           location: "Marmara Bölgesi",
           status: "Tamamlandı",
+          statusDetail: "Tamamlandı - 2016",
+          mapUrl:
+            "https://www.google.com/maps/search/?api=1&query=Marmara%20B%C3%B6lgesi",
+          specs: ["3+1 125 m2 yaşam alanı", "Sosyal alanlara yakın konum", "Modern cephe sistemi", "Ankastre mutfak altyapısı"],
           description:
             "Sosyal yaşam alanlarına yakınlığı ve estetik mimari çizgisiyle dikkat çeken yaşam projesi.",
           image:
@@ -95,6 +107,10 @@ export const site = {
           category: "Biten Projelerimiz",
           location: "İstanbul",
           status: "Tamamlandı",
+          statusDetail: "Tamamlandı - 2019",
+          mapUrl:
+            "https://www.google.com/maps/search/?api=1&query=%C4%B0stanbul%20Kent%20Bah%C3%A7e%20Villalar%C4%B1",
+          specs: ["4+1 villa tipi konut", "Bahçe kullanım alanı", "Doğal taş ve dekoratif cephe", "Yerden ısıtma altyapısı"],
           description:
             "Bahçeli yaşam konseptini modern mimariyle buluşturan özel konut projesi.",
           image:
@@ -111,6 +127,10 @@ export const site = {
           category: "Devam Eden Projelerimiz",
           location: "Avcılar / İstanbul",
           status: "Devam Ediyor",
+          statusDetail: "Devam Eden Proje / 2028 Aralık",
+          mapUrl:
+            "https://www.google.com/maps/search/?api=1&query=Avc%C4%B1lar%20%C4%B0stanbul",
+          specs: ["2+1 94 m2 daire seçeneği", "3+1 120 m2 daire seçeneği", "Ankastre mutfak", "Laminat parke ve modern ıslak hacimler"],
           description:
             "Merkezi konumu, modern mimarisi ve aile yaşamına uygun planlamasıyla geliştirilen özel konut projesi.",
           image:
@@ -121,6 +141,10 @@ export const site = {
           category: "Devam Eden Projelerimiz",
           location: "İstanbul",
           status: "Devam Ediyor",
+          statusDetail: "Devam Eden Proje / 2027 Haziran",
+          mapUrl:
+            "https://www.google.com/maps/search/?api=1&query=%C4%B0stanbul",
+          specs: ["2+1 96 m2 daireler", "3+1 122 m2 daireler", "Gömme dolap alanları", "Güçlendirilmiş ısı yalıtımı"],
           description:
             "Fonksiyonel daire planları ve çağdaş mimari yaklaşımıyla tasarlanan yeni nesil yaşam alanı.",
           image:
@@ -131,6 +155,10 @@ export const site = {
           category: "Devam Eden Projelerimiz",
           location: "İstanbul",
           status: "Devam Ediyor",
+          statusDetail: "Devam Eden Proje / 2027 Kasım",
+          mapUrl:
+            "https://www.google.com/maps/search/?api=1&query=%C4%B0stanbul%20G%C3%B6l%20Panorama",
+          specs: ["3+1 126 m2 daireler", "Göl manzaralı cepheler", "Geniş balkon", "Sosyal donatı alanları"],
           description:
             "Doğa ve şehir yaşamını bir arada sunan, ferah yaşam alanlarıyla öne çıkan konut projesi.",
           image:
@@ -141,6 +169,10 @@ export const site = {
           category: "Devam Eden Projelerimiz",
           location: "İstanbul",
           status: "Devam Ediyor",
+          statusDetail: "Devam Eden Proje / 2028 Mart",
+          mapUrl:
+            "https://www.google.com/maps/search/?api=1&query=%C4%B0stanbul%20Yeni%20Nesil%20Konutlar%C4%B1",
+          specs: ["1+1 62 m2 daireler", "2+1 92 m2 daireler", "Akıllı ev altyapısı", "Ankastre mutfak ve laminat parke"],
           description:
             "Modern aile yaşamının ihtiyaçlarına göre planlanan güvenli ve estetik konut projesi.",
           image:
@@ -157,6 +189,10 @@ export const site = {
           category: "Kamu Projeleri",
           location: "İstanbul",
           status: "Tamamlandı",
+          statusDetail: "Tamamlandı - 2005",
+          mapUrl:
+            "https://www.google.com/maps/search/?api=1&query=%C4%B0stanbul%20Belediye%20Hizmet%20Binas%C4%B1",
+          specs: ["İdari ofis alanları", "Toplantı ve hizmet birimleri", "Erişilebilir giriş çözümleri", "Dayanıklı dış cephe sistemi"],
           description:
             "Kamusal hizmetlerin daha verimli yürütülmesi için tasarlanan modern hizmet binası projesi.",
           image:
@@ -167,6 +203,10 @@ export const site = {
           category: "Kamu Projeleri",
           location: "İstanbul",
           status: "Tamamlandı",
+          statusDetail: "Tamamlandı - 2014",
+          mapUrl:
+            "https://www.google.com/maps/search/?api=1&query=%C4%B0stanbul%20Sosyal%20Ya%C5%9Fam%20Merkezi",
+          specs: ["Çok amaçlı salon", "Sosyal etkinlik alanları", "Engelsiz dolaşım", "Yoğun kullanıma uygun malzeme seçimi"],
           description:
             "Toplumsal etkileşimi artıran, çok amaçlı kullanım alanlarına sahip sosyal merkez projesi.",
           image:
@@ -177,6 +217,10 @@ export const site = {
           category: "Kamu Projeleri",
           location: "İstanbul",
           status: "Tamamlandı",
+          statusDetail: "Tamamlandı - 2018",
+          mapUrl:
+            "https://www.google.com/maps/search/?api=1&query=%C4%B0stanbul%20E%C4%9Fitim%20Kompleksi",
+          specs: ["Derslik ve idari alanlar", "Güvenli dolaşım kurgusu", "Bahçe ve tören alanı", "Dayanıklı zemin kaplamaları"],
           description:
             "Eğitim ihtiyaçlarına uygun, güvenli ve fonksiyonel alanlar sunan modern yapı projesi.",
           image:
@@ -187,6 +231,10 @@ export const site = {
           category: "Kamu Projeleri",
           location: "İstanbul",
           status: "Devam Ediyor",
+          statusDetail: "Devam Eden Proje / 2026 Eylül",
+          mapUrl:
+            "https://www.google.com/maps/search/?api=1&query=%C4%B0stanbul%20K%C3%BClt%C3%BCr%20ve%20Etkinlik%20Alan%C4%B1",
+          specs: ["Çok amaçlı etkinlik alanı", "Sahne ve fuaye kurgusu", "Kamusal kullanım senaryosu", "Esnek salon planlaması"],
           description:
             "Kültürel etkinlikler, sosyal buluşmalar ve kamusal kullanım için tasarlanan çok amaçlı alan projesi.",
           image:
@@ -202,19 +250,21 @@ export const site = {
     details: [
       ["Proje Tipi", "Konut"],
       ["Konum", "Avcılar / İstanbul"],
-      ["Durum", "Devam Eden Proje"],
-      ["Mimari Yaklaşım", "Modern Konut"],
-      ["Hedef", "Konforlu ve güvenli yaşam"],
+      ["Durum", "Devam Eden Proje / 2028 Aralık"],
+      ["Kullanılan Malzemeler", "C30 beton, nervürlü inşaat demiri (S420)"],
+      ["Beton Tedariki", "Onaylı hazır beton tesisinden proje standardına uygun tedarik"],
       ["Kullanım Amacı", "Aile yaşamı"]
     ],
     features: [
-      "Merkezi Konum",
-      "Modern Mimari",
-      "Aile Yaşamına Uygun Planlama",
-      "Güvenli Yapı Sistemi",
-      "Sosyal Alanlara Yakınlık",
-      "Yüksek Yaşam Konforu"
+      "2+1 94 m2 daire seçeneği",
+      "3+1 120 m2 daire seçeneği",
+      "Ankastre mutfak altyapısı",
+      "Laminat parke yaşam alanları",
+      "Modern banyo ve ıslak hacimler",
+      "Isı ve ses yalıtımı"
     ],
+    mapUrl:
+      "https://www.google.com/maps/search/?api=1&query=Avc%C4%B1lar%20%C4%B0stanbul",
     gallery: [
       "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1600&q=85",
       "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=900&q=80",
