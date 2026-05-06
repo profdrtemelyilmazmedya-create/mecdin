@@ -32,12 +32,26 @@ export function FeaturedProject() {
                   <p className="text-xs font-bold uppercase tracking-[0.16em] text-white/40">
                     {label}
                   </p>
-                  <p className="mt-2 font-semibold text-white">{value}</p>
+                  {label === "Konum" ? (
+                    <a
+                      href={project.mapUrl}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="mt-2 inline-flex font-semibold text-white underline decoration-ember/60 underline-offset-4 transition hover:text-ember"
+                    >
+                      {value}
+                    </a>
+                  ) : (
+                    <p className="mt-2 font-semibold text-white">{value}</p>
+                  )}
                 </div>
               ))}
             </div>
 
-            <div className="mt-8 grid grid-cols-2 gap-3 lg:grid-cols-3">
+            <p className="mt-8 text-sm font-bold uppercase tracking-[0.2em] text-white/45">
+              Konut Tipleri ve İç Özellikler
+            </p>
+            <div className="mt-3 grid grid-cols-2 gap-3 lg:grid-cols-3">
               {project.features.map((feature) => (
                 <div
                   key={feature}
