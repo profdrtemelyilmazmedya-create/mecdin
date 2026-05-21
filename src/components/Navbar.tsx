@@ -20,9 +20,8 @@ const menu = [
     label: "Projeler",
     href: "#projeler",
     children: [
-      { label: "Biten Projelerimiz", href: "#biten-projeler" },
-      { label: "Devam Eden Projelerimiz", href: "#devam-eden-projeler" },
-      { label: "Kamu Projeleri", href: "#kamu-projeleri" }
+      { label: "Biten Projelerimiz", href: "#biten-projelerimiz" },
+      { label: "Devam Eden Projelerimiz", href: "#devam-eden-projeler" }
     ]
   },
   { label: "Avcılar Konut Projesi", href: "#avcilar-konut-projesi" },
@@ -34,14 +33,14 @@ function Logo() {
   const [logoSrc, setLogoSrc] = useState(site.logo);
 
   return (
-    <a href="#anasayfa" className="flex items-center gap-3" aria-label="Metakent İnşaat Anasayfa">
+    <a href="#anasayfa" className="flex items-center" aria-label="Metakent İnşaat Anasayfa">
       {!imageFailed ? (
-        <span className="relative h-16 w-44 overflow-hidden sm:h-20 sm:w-56">
+        <span className="relative h-14 w-64 overflow-hidden sm:h-16 sm:w-80 lg:h-[4.5rem] lg:w-[420px]">
           <Image
             src={logoSrc}
             alt="Metakent İnşaat Logo"
             fill
-            sizes="160px"
+            sizes="(max-width: 640px) 256px, (max-width: 1024px) 320px, 420px"
             onError={() => {
               if (logoSrc !== site.fallbackLogo) {
                 setLogoSrc(site.fallbackLogo);
@@ -49,7 +48,8 @@ function Logo() {
               }
               setImageFailed(true);
             }}
-            className="object-contain"
+            className="object-contain object-left"
+            priority
           />
         </span>
       ) : (
@@ -57,9 +57,7 @@ function Logo() {
           <Building2 size={24} />
         </span>
       )}
-      <span className="sr-only text-base font-semibold tracking-wide text-white sm:text-lg">
-        {site.brand}
-      </span>
+      <span className="sr-only">{site.brand}</span>
     </a>
   );
 }
@@ -83,7 +81,7 @@ export function Navbar() {
           : "bg-gradient-to-b from-black/80 to-transparent"
       }`}
     >
-      <nav className="mx-auto flex h-20 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
+      <nav className="mx-auto flex h-24 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
         <Logo />
 
         <div className="hidden items-center gap-1 lg:flex">
