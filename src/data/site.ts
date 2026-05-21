@@ -1,13 +1,49 @@
 export const whatsappProjectUrl =
-  "https://wa.me/905326066599?text=Merhaba,%20Avcılar%20Konut%20Projesi%20hakkında%20bilgi%20almak%20istiyorum.";
+  "https://wa.me/905326066599?text=Merhaba,%20Avc%C4%B1lar%20M.Kemal%20Pa%C5%9Fa%20Mahallesi%20Konut%20Projesi%20hakk%C4%B1nda%20bilgi%20almak%20istiyorum.";
 
 export const whatsappGeneralUrl =
   "https://wa.me/905326066599?text=Merhaba,%20Metakent%20%C4%B0n%C5%9Faat%20projeleri%20hakk%C4%B1nda%20bilgi%20almak%20istiyorum.";
 
+const referenceImages = [
+  "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1200&q=80",
+  "https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=1200&q=80",
+  "https://images.unsplash.com/photo-1494526585095-c41746248156?auto=format&fit=crop&w=1200&q=80",
+  "https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=1200&q=80",
+  "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1200&q=80",
+  "https://images.unsplash.com/photo-1562774053-701939374585?auto=format&fit=crop&w=1200&q=80",
+  "https://images.unsplash.com/photo-1518005020951-eccb494ad742?auto=format&fit=crop&w=1200&q=80",
+  "https://images.unsplash.com/photo-1511818966892-d7d671e672a2?auto=format&fit=crop&w=1200&q=80",
+  "https://images.unsplash.com/photo-1600573472592-401b489a3cdc?auto=format&fit=crop&w=1200&q=80",
+  "https://images.unsplash.com/photo-1600607688969-a5bfcd646154?auto=format&fit=crop&w=1200&q=80"
+];
+
+const mapUrl = (query: string) =>
+  `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(query)}`;
+
+const completedProject = (
+  name: string,
+  index: number,
+  group: string,
+  superCategory: string,
+  location: string
+) => ({
+  name,
+  category: "Biten Projelerimiz",
+  group,
+  superCategory,
+  location,
+  status: "Tamamlandı",
+  statusDetail: "Tamamlanan referans proje",
+  mapUrl: mapUrl(location),
+  specs: [superCategory, group, "Referans proje", "Kurumsal deneyim"],
+  description: `${group} kapsamında tamamlanan, Metakent İnşaat'ın teknik birikimini ve saha deneyimini yansıtan referans çalışması.`,
+  image: referenceImages[index % referenceImages.length]
+});
+
 export const site = {
   brand: "Metakent İnşaat",
-  logo: "/logo-web.png",
-  fallbackLogo: "/logo-02.png",
+  logo: "/logo-white.png",
+  fallbackLogo: "/logo.png",
   hero: {
     title: "Metakent İnşaat",
     subtitle:
@@ -45,77 +81,58 @@ export const site = {
     {
       title: "Güvenli Yapı Anlayışımız",
       text: "Yapı güvenliği, teknik doğruluk ve yönetmeliklere uygunluk ilkeleriyle sağlam ve güven veren projeler geliştirmek."
-    },
-    {
-      title: "Modern Mimari Yaklaşımımız",
-      text: "Yaşam ihtiyaçlarını doğru analiz eden, estetik ve fonksiyonelliği bir arada sunan çağdaş mimari çözümler üretmek."
-    },
-    {
-      title: "Sürdürülebilirlik",
-      text: "Çevreye duyarlı, kaynakları verimli kullanan ve uzun vadeli değer sağlayan yapı anlayışını benimsemek."
     }
   ],
   projectCategories: [
     {
       title: "Biten Projelerimiz",
-      id: "biten-projeler",
+      id: "biten-projelerimiz",
       projects: [
-        {
-          name: "Büyükçekmece Yaşam Evleri",
-          category: "Biten Projelerimiz",
-          location: "Büyükçekmece / İstanbul",
-          status: "Tamamlandı",
-          statusDetail: "Tamamlandı - 2005",
-          mapUrl:
-            "https://www.google.com/maps/search/?api=1&query=B%C3%BCy%C3%BCk%C3%A7ekmece%20%C4%B0stanbul",
-          specs: ["3+1 128 m2 daireler", "Geniş balkon kullanımı", "Laminat parke", "Ankastre mutfak altyapısı"],
-          description:
-            "Aile yaşamına uygun planlanan, modern cephe dili ve fonksiyonel yaşam alanlarıyla öne çıkan konut projesi.",
-          image:
-            "https://images.unsplash.com/photo-1600573472592-401b489a3cdc?auto=format&fit=crop&w=1200&q=80"
-        },
-        {
-          name: "Marmara Konutları",
-          category: "Biten Projelerimiz",
-          location: "İstanbul",
-          status: "Tamamlandı",
-          statusDetail: "Tamamlandı - 2012",
-          mapUrl:
-            "https://www.google.com/maps/search/?api=1&query=%C4%B0stanbul",
-          specs: ["2+1 94 m2 daireler", "3+1 118 m2 seçenek", "Isı ve ses yalıtımı", "Kapalı otopark planlaması"],
-          description:
-            "Şehir yaşamını konforlu ve güvenli bir yapıyla buluşturan modern konut projesi.",
-          image:
-            "https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=1200&q=80"
-        },
-        {
-          name: "Sahil Park Rezidans",
-          category: "Biten Projelerimiz",
-          location: "Marmara Bölgesi",
-          status: "Tamamlandı",
-          statusDetail: "Tamamlandı - 2016",
-          mapUrl:
-            "https://www.google.com/maps/search/?api=1&query=Marmara%20B%C3%B6lgesi",
-          specs: ["3+1 125 m2 yaşam alanı", "Sosyal alanlara yakın konum", "Modern cephe sistemi", "Ankastre mutfak altyapısı"],
-          description:
-            "Sosyal yaşam alanlarına yakınlığı ve estetik mimari çizgisiyle dikkat çeken yaşam projesi.",
-          image:
-            "https://images.unsplash.com/photo-1494526585095-c41746248156?auto=format&fit=crop&w=1200&q=80"
-        },
-        {
-          name: "Kent Bahçe Villaları",
-          category: "Biten Projelerimiz",
-          location: "İstanbul",
-          status: "Tamamlandı",
-          statusDetail: "Tamamlandı - 2019",
-          mapUrl:
-            "https://www.google.com/maps/search/?api=1&query=%C4%B0stanbul%20Kent%20Bah%C3%A7e%20Villalar%C4%B1",
-          specs: ["4+1 villa tipi konut", "Bahçe kullanım alanı", "Doğal taş ve dekoratif cephe", "Yerden ısıtma altyapısı"],
-          description:
-            "Bahçeli yaşam konseptini modern mimariyle buluşturan özel konut projesi.",
-          image:
-            "https://images.unsplash.com/photo-1600047509807-ba8f99d2cdde?auto=format&fit=crop&w=1200&q=80"
-        }
+        completedProject("Antalya Konyaaltı Yasemin Villaları - 12 villa (5.500 m2)", 0, "Villa Projeleri", "Konut Projeleri", "Konyaaltı / Antalya"),
+        completedProject("Çanakkale Küçükkuyu S.S. Görsen Yapı Kooperatifi - 20 villa ve sosyal tesis", 1, "Villa Projeleri", "Konut Projeleri", "Küçükkuyu / Çanakkale"),
+        completedProject("Sapanca Davos Villaları - 11 villa (5.500 m2)", 2, "Villa Projeleri", "Konut Projeleri", "Sapanca / Sakarya"),
+        completedProject("Antalya Hurma Sporland Villaları - 16 villa (4.800 m2)", 3, "Villa Projeleri", "Konut Projeleri", "Hurma / Antalya"),
+        completedProject("İstanbul Güzelce Naif Yavuztürk Konutu (650 m2)", 4, "Müstakil Konut Projeleri", "Konut Projeleri", "Güzelce / İstanbul"),
+        completedProject("İstanbul Avcılar Halil Almaca Apartmanı (1.200 m2)", 5, "Müstakil Konut Projeleri", "Konut Projeleri", "Avcılar / İstanbul"),
+        completedProject("Antalya Döşemealtı Gül-Özgür Şahintürk Konutu (190 m2)", 6, "Müstakil Konut Projeleri", "Konut Projeleri", "Döşemealtı / Antalya"),
+        completedProject("Antalya Konyaaltı Armina Konakları - 60 daire ve dükkanlar (20.000 m2)", 7, "Toplu Konut ve Yaşam Projeleri", "Konut Projeleri", "Konyaaltı / Antalya"),
+        completedProject("Antalya Konyaaltı Tria Konutları - 73 daire (15.000 m2)", 8, "Toplu Konut ve Yaşam Projeleri", "Konut Projeleri", "Konyaaltı / Antalya"),
+        completedProject("Antalya Konyaaltı Greenspring 1 Konutları - 24 daire (3.500 m2)", 9, "Toplu Konut ve Yaşam Projeleri", "Konut Projeleri", "Konyaaltı / Antalya"),
+        completedProject("Antalya Konyaaltı Hurma Greenspring 2 Konutları - 30 daire (4.500 m2)", 10, "Toplu Konut ve Yaşam Projeleri", "Konut Projeleri", "Hurma Konyaaltı / Antalya"),
+        completedProject("İstanbul Kıraç Hüseyin Ağgül - Cihan Doğan Yılmaz İş Merkezi (3.600 m2)", 11, "İş Merkezi Projeleri", "Ticari Yapı ve İş Merkezleri", "Kıraç / İstanbul"),
+        completedProject("Avcılar Parseller Almaca İş Merkezi (4.200 m2)", 12, "İş Merkezi Projeleri", "Ticari Yapı ve İş Merkezleri", "Avcılar / İstanbul"),
+        completedProject("İstanbul Esenyurt İbrahim Balkaya İş Merkezi (12.000 m2)", 13, "İş Merkezi Projeleri", "Ticari Yapı ve İş Merkezleri", "Esenyurt / İstanbul"),
+        completedProject("İstanbul Karınca Taşımacılık Gürpınar Tesisleri Deposu (7.000 m2)", 14, "Depo ve Endüstriyel Yapılar", "Ticari Yapı ve İş Merkezleri", "Gürpınar / İstanbul"),
+        completedProject("İstanbul Sefaköy Çağdaş Bilimler Koleji (7.200 m2)", 15, "Eğitim Yapıları", "Eğitim ve Kamu Yapıları", "Sefaköy / İstanbul"),
+        completedProject("İstanbul Bahçeşehir Serhat-Arıkan Eğitim Hizmetleri Okulu (52.000 m2)", 16, "Eğitim Yapıları", "Eğitim ve Kamu Yapıları", "Bahçeşehir / İstanbul"),
+        completedProject("Avcılar Belediyesi Cihangir Kent Evi", 17, "Kamu Yapıları", "Eğitim ve Kamu Yapıları", "Cihangir Avcılar / İstanbul"),
+        completedProject("Avcılar Belediyesi Yolcu Aktarma İstasyonu (Otobüs Terminali)", 18, "Kamu Yapıları", "Eğitim ve Kamu Yapıları", "Avcılar / İstanbul"),
+        completedProject("Avcılar Belediyesi Şehit Er Dursun Bakan Parkı", 19, "Kamu Yapıları", "Eğitim ve Kamu Yapıları", "Avcılar / İstanbul"),
+        completedProject("Antalya Beldibi Carelta Beach Otel - 215 oda (12.000 m2)", 20, "Otel ve Turizm Projeleri", "Otel ve Turizm Projeleri", "Beldibi / Antalya"),
+        completedProject("Antalya Konyaaltı Kaf Otelcilik Oteli (10.000 m2)", 21, "Otel ve Turizm Projeleri", "Otel ve Turizm Projeleri", "Konyaaltı / Antalya"),
+        completedProject("İstanbul Beylikdüzü ÖKOP Konutları (35.000 m2)", 22, "Peyzaj ve Çevre Düzenleme", "Altyapı ve Çevre Düzenleme Projeleri", "Beylikdüzü / İstanbul"),
+        completedProject("İstanbul Çekmeköy ÖKOP Konutları (27.500 m2)", 23, "Peyzaj ve Çevre Düzenleme", "Altyapı ve Çevre Düzenleme Projeleri", "Çekmeköy / İstanbul"),
+        completedProject("Marmara Ereğlisi BOTAŞ LNG İşletmeleri çevre düzenleme", 24, "Altyapı ve Kamu Çalışmaları", "Altyapı ve Çevre Düzenleme Projeleri", "Marmara Ereğlisi / Tekirdağ"),
+        completedProject("Şehit Er Dursun Bakan Parkı", 25, "Altyapı ve Kamu Çalışmaları", "Altyapı ve Çevre Düzenleme Projeleri", "Avcılar / İstanbul"),
+        completedProject("Yolcu Aktarma Merkezi", 26, "Altyapı ve Kamu Çalışmaları", "Altyapı ve Çevre Düzenleme Projeleri", "Avcılar / İstanbul"),
+        completedProject("Türkmenistan Aşkabat Camii ve Kültür Merkezi", 27, "Mimari ve Statik Projeler", "Proje Tasarım ve Müşavirlik Hizmetleri", "Aşkabat / Türkmenistan"),
+        completedProject("İstanbul Bahçeşehir Aqua Dolphin Su Oyunları Merkezi", 28, "Mimari ve Statik Projeler", "Proje Tasarım ve Müşavirlik Hizmetleri", "Bahçeşehir / İstanbul"),
+        completedProject("Çekmeköy Öğretmenler Kooperatifi Konutları", 29, "Mimari ve Statik Projeler", "Proje Tasarım ve Müşavirlik Hizmetleri", "Çekmeköy / İstanbul"),
+        completedProject("Beylikdüzü Kardeşkent 3 Konutları", 30, "Mimari ve Statik Projeler", "Proje Tasarım ve Müşavirlik Hizmetleri", "Beylikdüzü / İstanbul"),
+        completedProject("İstanbul Yenibosna AK-EL Vakfı Yönetim Merkezi", 31, "Mimari ve Statik Projeler", "Proje Tasarım ve Müşavirlik Hizmetleri", "Yenibosna / İstanbul"),
+        completedProject("Gürpınar Yavuztürk Fabrika ve Çiftlik Evi", 32, "Kontrollük ve Danışmanlık", "Proje Tasarım ve Müşavirlik Hizmetleri", "Gürpınar / İstanbul"),
+        completedProject("Çeşitli konut ve tesis müşavirlik hizmetleri", 33, "Kontrollük ve Danışmanlık", "Proje Tasarım ve Müşavirlik Hizmetleri", "İstanbul"),
+        completedProject("Eston Barışkent 1-2 Etap", 34, "Konut Projeleri", "Dış Cephe Isı Yalıtımı ve Boya Uygulamaları", "İstanbul"),
+        completedProject("Armina Konakları", 35, "Konut Projeleri", "Dış Cephe Isı Yalıtımı ve Boya Uygulamaları", "Konyaaltı / Antalya"),
+        completedProject("Greenspring Konutları", 36, "Konut Projeleri", "Dış Cephe Isı Yalıtımı ve Boya Uygulamaları", "Konyaaltı / Antalya"),
+        completedProject("Hasbahçe", 37, "Konut Projeleri", "Dış Cephe Isı Yalıtımı ve Boya Uygulamaları", "İstanbul"),
+        completedProject("Özferah", 38, "Konut Projeleri", "Dış Cephe Isı Yalıtımı ve Boya Uygulamaları", "İstanbul"),
+        completedProject("Lider Sitesi", 39, "Konut Projeleri", "Dış Cephe Isı Yalıtımı ve Boya Uygulamaları", "İstanbul"),
+        completedProject("Kavaklıkent projeleri", 40, "Konut Projeleri", "Dış Cephe Isı Yalıtımı ve Boya Uygulamaları", "İstanbul"),
+        completedProject("Ali Alagöz Fabrikası", 41, "Ticari ve Endüstriyel Yapılar", "Dış Cephe Isı Yalıtımı ve Boya Uygulamaları", "İstanbul"),
+        completedProject("Thin-Pak Fabrikası", 42, "Ticari ve Endüstriyel Yapılar", "Dış Cephe Isı Yalıtımı ve Boya Uygulamaları", "İstanbul"),
+        completedProject("Avcılar Kaymakamlık Binası", 43, "Kamu ve Resmi Yapılar", "Dış Cephe Isı Yalıtımı ve Boya Uygulamaları", "Avcılar / İstanbul"),
+        completedProject("Tekirdağ Ordu Evi ve Lojmanları", 44, "Kamu ve Resmi Yapılar", "Dış Cephe Isı Yalıtımı ve Boya Uygulamaları", "Tekirdağ")
       ]
     },
     {
@@ -123,133 +140,37 @@ export const site = {
       id: "devam-eden-projeler",
       projects: [
         {
-          name: "Avcılar Konut Projesi",
+          name: "Avcılar M.Kemal Paşa Mahallesi Konut Projesi",
           category: "Devam Eden Projelerimiz",
-          location: "Avcılar / İstanbul",
+          group: "Konut Projesi",
+          superCategory: "Devam Eden Projelerimiz",
+          location: "Mustafa Kemal Paşa / Avcılar / İstanbul",
           status: "Devam Ediyor",
           statusDetail: "Devam Eden Proje / 2028 Aralık",
-          mapUrl:
-            "https://www.google.com/maps/search/?api=1&query=Avc%C4%B1lar%20%C4%B0stanbul",
-          specs: ["2+1 94 m2 daire seçeneği", "3+1 120 m2 daire seçeneği", "Ankastre mutfak", "Laminat parke ve modern ıslak hacimler"],
+          mapUrl: mapUrl("Mustafa Kemal Paşa Avcılar İstanbul"),
+          specs: [
+            "2+1 94 m2 daire seçeneği",
+            "3+1 120 m2 daire seçeneği",
+            "C30 beton",
+            "Nervürlü inşaat demiri S420",
+            "Ankastre mutfak altyapısı",
+            "Laminat parke ve modern ıslak hacimler"
+          ],
           description:
-            "Merkezi konumu, modern mimarisi ve aile yaşamına uygun planlamasıyla geliştirilen özel konut projesi.",
+            "Avcılar M.Kemal Paşa Mahallesi Konut Projesi; ulaşım akslarına yakın konumu, aile yaşamına uygun daire planları, modern cephe dili ve güvenli yapı standardıyla geliştirilen özel bir konut projesidir.",
           image:
             "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1200&q=80"
-        },
-        {
-          name: "Metakent Modern Yaşam",
-          category: "Devam Eden Projelerimiz",
-          location: "İstanbul",
-          status: "Devam Ediyor",
-          statusDetail: "Devam Eden Proje / 2027 Haziran",
-          mapUrl:
-            "https://www.google.com/maps/search/?api=1&query=%C4%B0stanbul",
-          specs: ["2+1 96 m2 daireler", "3+1 122 m2 daireler", "Gömme dolap alanları", "Güçlendirilmiş ısı yalıtımı"],
-          description:
-            "Fonksiyonel daire planları ve çağdaş mimari yaklaşımıyla tasarlanan yeni nesil yaşam alanı.",
-          image:
-            "https://images.unsplash.com/photo-1600566752355-35792bedcfea?auto=format&fit=crop&w=1200&q=80"
-        },
-        {
-          name: "Göl Panorama Evleri",
-          category: "Devam Eden Projelerimiz",
-          location: "İstanbul",
-          status: "Devam Ediyor",
-          statusDetail: "Devam Eden Proje / 2027 Kasım",
-          mapUrl:
-            "https://www.google.com/maps/search/?api=1&query=%C4%B0stanbul%20G%C3%B6l%20Panorama",
-          specs: ["3+1 126 m2 daireler", "Göl manzaralı cepheler", "Geniş balkon", "Sosyal donatı alanları"],
-          description:
-            "Doğa ve şehir yaşamını bir arada sunan, ferah yaşam alanlarıyla öne çıkan konut projesi.",
-          image:
-            "https://images.unsplash.com/photo-1600607688969-a5bfcd646154?auto=format&fit=crop&w=1200&q=80"
-        },
-        {
-          name: "Yeni Nesil Konutları",
-          category: "Devam Eden Projelerimiz",
-          location: "İstanbul",
-          status: "Devam Ediyor",
-          statusDetail: "Devam Eden Proje / 2028 Mart",
-          mapUrl:
-            "https://www.google.com/maps/search/?api=1&query=%C4%B0stanbul%20Yeni%20Nesil%20Konutlar%C4%B1",
-          specs: ["1+1 62 m2 daireler", "2+1 92 m2 daireler", "Akıllı ev altyapısı", "Ankastre mutfak ve laminat parke"],
-          description:
-            "Modern aile yaşamının ihtiyaçlarına göre planlanan güvenli ve estetik konut projesi.",
-          image:
-            "https://images.unsplash.com/photo-1600607687644-aac4c3eac7f4?auto=format&fit=crop&w=1200&q=80"
-        }
-      ]
-    },
-    {
-      title: "Kamu Projeleri",
-      id: "kamu-projeleri",
-      projects: [
-        {
-          name: "Belediye Hizmet Binası",
-          category: "Kamu Projeleri",
-          location: "İstanbul",
-          status: "Tamamlandı",
-          statusDetail: "Tamamlandı - 2005",
-          mapUrl:
-            "https://www.google.com/maps/search/?api=1&query=%C4%B0stanbul%20Belediye%20Hizmet%20Binas%C4%B1",
-          specs: ["İdari ofis alanları", "Toplantı ve hizmet birimleri", "Erişilebilir giriş çözümleri", "Dayanıklı dış cephe sistemi"],
-          description:
-            "Kamusal hizmetlerin daha verimli yürütülmesi için tasarlanan modern hizmet binası projesi.",
-          image:
-            "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1200&q=80"
-        },
-        {
-          name: "Sosyal Yaşam Merkezi",
-          category: "Kamu Projeleri",
-          location: "İstanbul",
-          status: "Tamamlandı",
-          statusDetail: "Tamamlandı - 2014",
-          mapUrl:
-            "https://www.google.com/maps/search/?api=1&query=%C4%B0stanbul%20Sosyal%20Ya%C5%9Fam%20Merkezi",
-          specs: ["Çok amaçlı salon", "Sosyal etkinlik alanları", "Engelsiz dolaşım", "Yoğun kullanıma uygun malzeme seçimi"],
-          description:
-            "Toplumsal etkileşimi artıran, çok amaçlı kullanım alanlarına sahip sosyal merkez projesi.",
-          image:
-            "https://images.unsplash.com/photo-1518005020951-eccb494ad742?auto=format&fit=crop&w=1200&q=80"
-        },
-        {
-          name: "Eğitim Kompleksi",
-          category: "Kamu Projeleri",
-          location: "İstanbul",
-          status: "Tamamlandı",
-          statusDetail: "Tamamlandı - 2018",
-          mapUrl:
-            "https://www.google.com/maps/search/?api=1&query=%C4%B0stanbul%20E%C4%9Fitim%20Kompleksi",
-          specs: ["Derslik ve idari alanlar", "Güvenli dolaşım kurgusu", "Bahçe ve tören alanı", "Dayanıklı zemin kaplamaları"],
-          description:
-            "Eğitim ihtiyaçlarına uygun, güvenli ve fonksiyonel alanlar sunan modern yapı projesi.",
-          image:
-            "https://images.unsplash.com/photo-1562774053-701939374585?auto=format&fit=crop&w=1200&q=80"
-        },
-        {
-          name: "Kültür ve Etkinlik Alanı",
-          category: "Kamu Projeleri",
-          location: "İstanbul",
-          status: "Devam Ediyor",
-          statusDetail: "Devam Eden Proje / 2026 Eylül",
-          mapUrl:
-            "https://www.google.com/maps/search/?api=1&query=%C4%B0stanbul%20K%C3%BClt%C3%BCr%20ve%20Etkinlik%20Alan%C4%B1",
-          specs: ["Çok amaçlı etkinlik alanı", "Sahne ve fuaye kurgusu", "Kamusal kullanım senaryosu", "Esnek salon planlaması"],
-          description:
-            "Kültürel etkinlikler, sosyal buluşmalar ve kamusal kullanım için tasarlanan çok amaçlı alan projesi.",
-          image:
-            "https://images.unsplash.com/photo-1511818966892-d7d671e672a2?auto=format&fit=crop&w=1200&q=80"
         }
       ]
     }
   ],
   featuredProject: {
-    name: "Avcılar Konut Projesi",
+    name: "Avcılar M.Kemal Paşa Mahallesi Konut Projesi",
     description:
-      "Avcılar Konut Projesi, şehir yaşamının merkezinde konforlu, güvenli ve modern bir yaşam alanı sunmak üzere tasarlanmıştır. Fonksiyonel daire planları, güçlü mimari dili, ulaşım akslarına yakınlığı ve aile yaşamını destekleyen çevresel olanaklarıyla bölgeye değer katmayı hedefleyen özel bir konut projesidir. Proje; estetik görünüm, sağlam yapı anlayışı ve uzun vadeli yatırım değeriyle öne çıkar.",
+      "Avcılar M.Kemal Paşa Mahallesi Konut Projesi, şehir yaşamının merkezinde konforlu, güvenli ve modern bir yaşam alanı sunmak üzere tasarlanmıştır. Fonksiyonel daire planları, güçlü mimari dili, ulaşım akslarına yakınlığı ve aile yaşamını destekleyen çevresel olanaklarıyla bölgeye değer katmayı hedefleyen özel bir konut projesidir. Proje; estetik görünüm, sağlam yapı anlayışı ve uzun vadeli yatırım değeriyle öne çıkar.",
     details: [
       ["Proje Tipi", "Konut"],
-      ["Konum", "Avcılar / İstanbul"],
+      ["Konum", "Mustafa Kemal Paşa / Avcılar / İstanbul"],
       ["Durum", "Devam Eden Proje / 2028 Aralık"],
       ["Kullanılan Malzemeler", "C30 beton, nervürlü inşaat demiri (S420)"],
       ["Beton Tedariki", "Onaylı hazır beton tesisinden proje standardına uygun tedarik"],
@@ -263,8 +184,7 @@ export const site = {
       "Modern banyo ve ıslak hacimler",
       "Isı ve ses yalıtımı"
     ],
-    mapUrl:
-      "https://www.google.com/maps/search/?api=1&query=Avc%C4%B1lar%20%C4%B0stanbul",
+    mapUrl: mapUrl("Mustafa Kemal Paşa Avcılar İstanbul"),
     gallery: [
       "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1600&q=85",
       "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=900&q=80",
