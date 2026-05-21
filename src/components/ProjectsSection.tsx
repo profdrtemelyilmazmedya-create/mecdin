@@ -223,24 +223,12 @@ function ProjectCard({ project, onSelect }: { project: Project; onSelect: () => 
       </div>
 
       <div className="p-5">
-        <p className="text-sm font-black uppercase tracking-[0.16em] text-gold">
+        <p className="text-xs font-bold uppercase tracking-[0.14em] text-gold">
           {project.info}
         </p>
-        <h5 className="mt-3 min-h-[4.5rem] text-2xl font-black leading-tight text-white sm:text-3xl">
+        <h5 className="mt-3 min-h-[4rem] text-xl font-black leading-tight text-white sm:text-2xl">
           {project.name}
         </h5>
-        <a
-          href={project.mapUrl}
-          target="_blank"
-          rel="noreferrer"
-          className="mt-3 inline-flex items-center gap-1.5 text-sm font-semibold text-white/70 transition hover:text-white"
-        >
-          <MapPin size={15} className={isOngoing ? "text-emerald-400" : "text-ember"} />
-          {project.location}
-        </a>
-        <p className="mt-4 line-clamp-3 text-sm leading-6 text-white/68 transition group-hover:text-white/90">
-          {project.description}
-        </p>
         <button
           type="button"
           onClick={onSelect}
@@ -311,10 +299,6 @@ function ProjectModal({
               Proje Hakkında
             </p>
             <p className="mt-4 text-base leading-8 text-white/72">{project.description}</p>
-            <p className="mt-4 text-base leading-8 text-white/72">
-              {project.name}, Metakent İnşaat'ın kalite, güvenlik ve teknik
-              disiplin yaklaşımını yansıtan referans çalışmalarından biridir.
-            </p>
           </div>
 
           <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-1">
