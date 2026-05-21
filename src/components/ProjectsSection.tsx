@@ -6,6 +6,25 @@ import { site } from "@/data/site";
 import { SafeImage } from "./SafeImage";
 
 type Project = (typeof site.projectCategories)[number]["projects"][number];
+type ProjectCategory = (typeof site.projectCategories)[number];
+
+function buildGroups(category: ProjectCategory) {
+  const map = new Map<string, { superCategory: string; group: string; projects: Project[] }>();
+
+  category.projects.forEach((project) => {
+    const key = `${project.superCategory}__${project.group}`;
+    if (!map.has(key)) {
+      map.set(key, {
+        superCategory: project.superCategory,
+        group: project.group,
+        projects: []
+      });
+    }
+    map.get(key)?.projects.push(project);
+  });
+
+  return Array.from(map.values());
+}
 
 export function ProjectsSection() {
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
@@ -26,67 +45,44 @@ export function ProjectsSection() {
           </p>
         </div>
 
-        <div className="mt-12 space-y-14">
+        <div className="mt-12 space-y-16">
           {site.projectCategories.map((category) => (
             <div key={category.title} id={category.id}>
-              <div className="mb-5 flex items-end justify-between gap-4">
-                <h3 className="text-2xl font-bold text-white">{category.title}</h3>
+              <div className="mb-7 flex items-end justify-between gap-4">
+                <div>
+                  <p className="text-xs font-bold uppercase tracking-[0.22em] text-white/35">
+                    Metakent Referansları
+                  </p>
+                  <h3 className="mt-2 text-3xl font-black text-white sm:text-4xl">
+                    {category.title}
+                  </h3>
+                </div>
                 <span className="hidden text-sm text-white/50 sm:block">
                   Detaylı proje vitrini
                 </span>
               </div>
 
-              <div className="hide-scrollbar -mx-4 flex snap-x gap-4 overflow-x-auto px-4 pb-4 pt-1 sm:-mx-6 sm:px-6 lg:-mx-8 lg:px-8">
-                {category.projects.map((project) => {
-                  const isOngoing = project.status === "Devam Ediyor";
+              <div className="space-y-10">
+                {buildGroups(category).map((group) => (
+                  <div key={`${group.superCategory}-${group.group}`}>
+                    <div className="mb-4">
+                      <p className="text-sm font-black uppercase tracking-[0.2em] text-ember">
+                        {group.superCategory}
+                      </p>
+                      <h4 className="mt-1 text-xl font-bold text-white/90">{group.group}</h4>
+                    </div>
 
-                  return (
-                    <article
-                      key={project.name}
-                      className="group relative h-[420px] w-[82vw] max-w-[390px] shrink-0 snap-start overflow-hidden rounded-md bg-graphite shadow-cinematic transition duration-300 hover:z-10 hover:scale-[1.035] hover:shadow-2xl sm:w-[360px]"
-                    >
-                      <SafeImage
-                        src={project.image}
-                        alt={project.name}
-                        sizes="(max-width: 640px) 82vw, 360px"
-                        className="object-cover transition duration-500 group-hover:scale-110"
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-transparent" />
-                      <div className="absolute inset-x-0 bottom-0 p-5">
-                        <div className="mb-3 flex flex-wrap gap-2">
-                          <span
-                            className={`rounded px-2.5 py-1 text-xs font-bold text-white ${
-                              isOngoing ? "bg-emerald-600" : "bg-ember"
-                            }`}
-                          >
-                            {project.status}
-                          </span>
-                        </div>
-                        <h4 className="text-2xl font-black leading-tight text-white">
-                          {project.name}
-                        </h4>
-                        <p className="mt-2 flex items-center gap-1.5 text-sm text-white/70">
-                          <MapPin
-                            size={15}
-                            className={isOngoing ? "text-emerald-400" : "text-ember"}
-                          />
-                          {project.location}
-                        </p>
-                        <p className="mt-3 line-clamp-3 text-sm leading-6 text-white/70 transition group-hover:text-white/90">
-                          {project.description}
-                        </p>
-                        <button
-                          type="button"
-                          onClick={() => setSelectedProject(project)}
-                          className="mt-5 inline-flex translate-y-2 items-center gap-2 rounded-md border border-white/20 bg-white/10 px-4 py-2 text-sm font-bold text-white opacity-90 backdrop-blur transition group-hover:translate-y-0 group-hover:border-ember/50 group-hover:bg-ember group-hover:opacity-100"
-                        >
-                          Projeyi İncele
-                          <ArrowUpRight size={17} />
-                        </button>
-                      </div>
-                    </article>
-                  );
-                })}
+                    <div className="hide-scrollbar -mx-4 flex snap-x gap-4 overflow-x-auto px-4 pb-4 pt-1 sm:-mx-6 sm:px-6 lg:-mx-8 lg:px-8">
+                      {group.projects.map((project) => (
+                        <ProjectCard
+                          key={project.name}
+                          project={project}
+                          onSelect={() => setSelectedProject(project)}
+                        />
+                      ))}
+                    </div>
+                  </div>
+                ))}
               </div>
             </div>
           ))}
@@ -100,6 +96,60 @@ export function ProjectsSection() {
   );
 }
 
+function ProjectCard({ project, onSelect }: { project: Project; onSelect: () => void }) {
+  const isOngoing = project.status === "Devam Ediyor";
+
+  return (
+    <article className="group w-[84vw] max-w-[420px] shrink-0 snap-start overflow-hidden rounded-md border border-white/10 bg-[#11141b] shadow-cinematic transition duration-300 hover:z-10 hover:scale-[1.025] hover:border-white/20 hover:shadow-2xl sm:w-[390px]">
+      <div className="relative h-56 overflow-hidden bg-graphite">
+        <SafeImage
+          src={project.image}
+          alt={project.name}
+          sizes="(max-width: 640px) 84vw, 390px"
+          className="object-cover transition duration-500 group-hover:scale-110"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/65 via-black/15 to-transparent" />
+        <span
+          className={`absolute left-4 top-4 rounded px-3 py-1 text-xs font-bold text-white ${
+            isOngoing ? "bg-emerald-600" : "bg-ember"
+          }`}
+        >
+          {project.status}
+        </span>
+      </div>
+
+      <div className="p-5">
+        <p className="text-xs font-bold uppercase tracking-[0.18em] text-white/42">
+          {project.superCategory}
+        </p>
+        <h5 className="mt-2 min-h-[4.5rem] text-2xl font-black leading-tight text-white sm:text-3xl">
+          {project.name}
+        </h5>
+        <a
+          href={project.mapUrl}
+          target="_blank"
+          rel="noreferrer"
+          className="mt-3 inline-flex items-center gap-1.5 text-sm font-semibold text-white/70 transition hover:text-white"
+        >
+          <MapPin size={15} className={isOngoing ? "text-emerald-400" : "text-ember"} />
+          {project.location}
+        </a>
+        <p className="mt-4 line-clamp-3 text-sm leading-6 text-white/68 transition group-hover:text-white/90">
+          {project.description}
+        </p>
+        <button
+          type="button"
+          onClick={onSelect}
+          className="mt-5 inline-flex items-center gap-2 rounded-md border border-white/20 bg-white/10 px-4 py-2 text-sm font-bold text-white backdrop-blur transition hover:border-ember/50 hover:bg-ember"
+        >
+          Projeyi İncele
+          <ArrowUpRight size={17} />
+        </button>
+      </div>
+    </article>
+  );
+}
+
 function ProjectModal({
   project,
   onClose
@@ -108,7 +158,6 @@ function ProjectModal({
   onClose: () => void;
 }) {
   const isOngoing = project.status === "Devam Ediyor";
-  const isPublic = project.category === "Kamu Projeleri";
 
   return (
     <div className="fixed inset-0 z-[80] overflow-y-auto bg-black/80 px-4 py-8 backdrop-blur-md">
@@ -159,8 +208,8 @@ function ProjectModal({
             </p>
             <p className="mt-4 text-base leading-8 text-white/72">{project.description}</p>
             <p className="mt-4 text-base leading-8 text-white/72">
-              {project.name}, Metakent İnşaat'ın kalite, güvenlik ve modern mimari
-              yaklaşımını yansıtan referans projelerinden biridir. Projede konum
+              {project.name}, Metakent İnşaat'ın kalite, güvenlik ve teknik disiplin
+              yaklaşımını yansıtan referans çalışmalarından biridir. Projede konum
               avantajı, fonksiyonel planlama, güçlü yapı standardı ve uzun vadeli
               kullanım değeri ön planda tutulmuştur.
             </p>
@@ -168,11 +217,11 @@ function ProjectModal({
 
           <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-1">
             {[
-              ["Kategori", `${project.category} / ${project.name}`],
+              ["Kategori", `${project.superCategory} / ${project.group}`],
               ["Konum", project.location],
-              ["Durum", project.statusDetail ?? project.status],
-              ["Yapı Yaklaşımı", isOngoing ? "Modern proje geliştirme" : "Tamamlanan referans proje"],
-              ["Kullanım", isPublic ? "Kamusal kullanım" : "Yaşam alanı"]
+              ["Durum", project.statusDetail],
+              ["Yapı Yaklaşımı", isOngoing ? "Modern konut geliştirme" : "Tamamlanan referans çalışma"],
+              ["Kullanım", isOngoing ? "Aile yaşamı" : project.group]
             ].map(([label, value]) => (
               <div key={label} className="rounded-md border border-white/10 bg-white/[0.055] p-4">
                 <p className="text-xs font-bold uppercase tracking-[0.16em] text-white/40">
@@ -197,7 +246,7 @@ function ProjectModal({
 
         <div className="border-t border-white/10 p-6 sm:p-8">
           <div className="grid gap-3 sm:grid-cols-3">
-            {(project.specs ?? ["Kaliteli malzeme", "Zamanında teslim", "Kurumsal süreç yönetimi"]).map((item) => (
+            {project.specs.map((item) => (
               <div
                 key={item}
                 className="flex items-center gap-2 rounded-md bg-white/[0.055] px-4 py-3 text-sm font-semibold text-white/85"
