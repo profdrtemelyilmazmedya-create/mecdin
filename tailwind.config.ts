@@ -12,6 +12,7 @@ const config: Config = {
       colors: {
         ink: "#07080d",
         ember: "#d51f2a",
+        gold: "#f2b705",
         merlot: "#7a1420",
         graphite: "#15171f",
         steel: "#aeb6c7"
