@@ -20,7 +20,11 @@ const menu = [
     label: "Projeler",
     href: "#projeler",
     children: [
-      { label: "Biten Projelerimiz", href: "#biten-projelerimiz" },
+      { label: "Biten Projeler", href: "#biten-projeler" },
+      { label: "Konut Projeleri", href: "#konut-projeleri" },
+      { label: "Toplu Konut ve Yaşam Projeleri", href: "#toplu-konut-ve-yasam-projeleri" },
+      { label: "Villa Projeleri", href: "#villa-projeleri" },
+      { label: "Müstakil Konut Projeleri", href: "#mustakil-konut-projeleri" },
       { label: "Devam Eden Projelerimiz", href: "#devam-eden-projeler" }
     ]
   },
