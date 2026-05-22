@@ -1,6 +1,6 @@
 "use client";
 
-import { ArrowUpRight, CheckCircle2, MapPin, X } from "lucide-react";
+import { ArrowUpRight, X } from "lucide-react";
 import { useEffect, useMemo, useState } from "react";
 import { site } from "@/data/site";
 import { SafeImage } from "./SafeImage";
@@ -81,7 +81,7 @@ export function ProjectsSection() {
                   key={section.id}
                   type="button"
                   onClick={() => setActiveSectionId(section.id)}
-                  className={`shrink-0 rounded-md border px-4 py-3 text-sm font-black uppercase tracking-[0.12em] transition ${
+                  className={`shrink-0 rounded-md border px-3 py-2 text-xs font-bold uppercase tracking-[0.1em] transition ${
                     isActive
                       ? "border-ember bg-ember text-white shadow-lg shadow-ember/20"
                       : "border-white/10 bg-white/[0.055] text-white/68 hover:border-white/25 hover:text-white"
@@ -99,7 +99,7 @@ export function ProjectsSection() {
                 <p className="text-xs font-bold uppercase tracking-[0.24em] text-gold">
                   Ana Kategori
                 </p>
-                <h3 className="mt-2 text-3xl font-black text-white sm:text-4xl">
+                <h3 className="mt-2 text-xl font-black text-white sm:text-2xl">
                   {activeSection.title}
                 </h3>
               </div>
@@ -118,7 +118,7 @@ export function ProjectsSection() {
                           [activeSection.id]: group.id
                         }))
                       }
-                      className={`rounded-md border px-3 py-2 text-sm font-bold transition ${
+                      className={`rounded-md border px-3 py-2 text-xs font-bold transition sm:text-sm ${
                         isActive
                           ? "border-gold bg-gold text-black"
                           : "border-white/10 bg-black/30 text-white/70 hover:border-gold/50 hover:text-white"
@@ -143,7 +143,7 @@ export function ProjectsSection() {
             <p className="text-sm font-black uppercase tracking-[0.2em] text-emerald-400">
               Aktif Proje
             </p>
-            <h3 className="mt-2 text-3xl font-black text-white sm:text-4xl">
+            <h3 className="mt-2 text-2xl font-black text-white sm:text-3xl">
               {site.ongoingProjects.title}
             </h3>
           </div>
@@ -180,7 +180,7 @@ function ProjectRail({
           <p className="text-xs font-bold uppercase tracking-[0.2em] text-white/40">
             Alt Kategori
           </p>
-          <h4 className="mt-1 text-2xl font-black text-white">{group.title}</h4>
+          <h4 className="mt-1 text-lg font-black text-white sm:text-xl">{group.title}</h4>
         </div>
         <span className="hidden text-sm text-white/45 sm:block">
           {group.projects.length} referans
@@ -223,12 +223,12 @@ function ProjectCard({ project, onSelect }: { project: Project; onSelect: () => 
       </div>
 
       <div className="p-5">
-        <p className="text-xs font-bold uppercase tracking-[0.14em] text-gold">
-          {project.info}
-        </p>
-        <h5 className="mt-3 min-h-[4rem] text-xl font-black leading-tight text-white sm:text-2xl">
+        <h5 className="min-h-[3.25rem] text-base font-semibold leading-tight text-white sm:text-lg">
           {project.name}
         </h5>
+        <p className="mt-2 text-[11px] font-light leading-5 tracking-normal text-white/55">
+          - {project.info}
+        </p>
         <button
           type="button"
           onClick={onSelect}
@@ -249,19 +249,17 @@ function ProjectModal({
   project: Project;
   onClose: () => void;
 }) {
-  const isOngoing = project.status === "Devam Ediyor";
-
   return (
     <div className="fixed inset-0 z-[80] overflow-y-auto bg-black/80 px-4 py-8 backdrop-blur-md">
-      <div className="mx-auto max-w-5xl overflow-hidden rounded-md border border-white/10 bg-[#0b0d13] shadow-cinematic">
-        <div className="relative h-[320px] bg-graphite sm:h-[420px]">
+      <div className="mx-auto max-w-6xl overflow-hidden rounded-md border border-white/10 bg-[#0b0d13] shadow-cinematic">
+        <div className="relative aspect-[16/10] max-h-[78vh] bg-graphite">
           <SafeImage
             src={project.image}
             alt={project.name}
-            sizes="(max-width: 1024px) 100vw, 960px"
+            sizes="(max-width: 1024px) 100vw, 1152px"
             className="object-cover"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-[#0b0d13] via-black/35 to-black/15" />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/82 via-black/20 to-black/10" />
           <button
             type="button"
             onClick={onClose}
@@ -271,79 +269,12 @@ function ProjectModal({
             <X size={22} />
           </button>
           <div className="absolute inset-x-0 bottom-0 p-6 sm:p-8">
-            <span
-              className={`inline-flex rounded px-3 py-1 text-xs font-bold text-white ${
-                isOngoing ? "bg-emerald-600" : "bg-ember"
-              }`}
-            >
-              {project.status}
-            </span>
-            <h3 className="mt-3 text-3xl font-black text-white sm:text-5xl">
+            <h3 className="max-w-4xl text-2xl font-black text-white sm:text-4xl">
               {project.name}
             </h3>
-            <a
-              href={project.mapUrl}
-              target="_blank"
-              rel="noreferrer"
-              className="mt-2 inline-flex items-center gap-2 text-white/75 transition hover:text-white"
-            >
-              <MapPin size={18} className={isOngoing ? "text-emerald-400" : "text-ember"} />
-              {project.location}
-            </a>
-          </div>
-        </div>
-
-        <div className="grid gap-6 p-6 sm:p-8 lg:grid-cols-[1.1fr_0.9fr]">
-          <div>
-            <p className="text-sm font-bold uppercase tracking-[0.2em] text-white/45">
-              Proje Hakkında
+            <p className="mt-2 text-xs font-light tracking-normal text-white/70 sm:text-sm">
+              - {project.info}
             </p>
-            <p className="mt-4 text-base leading-8 text-white/72">{project.description}</p>
-          </div>
-
-          <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-1">
-            {[
-              ["Proje Bilgisi", project.info],
-              ["Konum", project.location],
-              ["Durum", project.statusDetail],
-              ["Yapı Yaklaşımı", isOngoing ? "Modern konut geliştirme" : "Tamamlanan referans çalışma"],
-              ["Kullanım", isOngoing ? "Aile yaşamı" : "Kurumsal referans"]
-            ].map(([label, value]) => (
-              <div key={label} className="rounded-md border border-white/10 bg-white/[0.055] p-4">
-                <p className="text-xs font-bold uppercase tracking-[0.16em] text-white/40">
-                  {label}
-                </p>
-                {label === "Konum" ? (
-                  <a
-                    href={project.mapUrl}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="mt-2 inline-flex font-semibold text-white underline decoration-ember/60 underline-offset-4 transition hover:text-ember"
-                  >
-                    {value}
-                  </a>
-                ) : (
-                  <p className="mt-2 font-semibold text-white">{value}</p>
-                )}
-              </div>
-            ))}
-          </div>
-        </div>
-
-        <div className="border-t border-white/10 p-6 sm:p-8">
-          <div className="grid gap-3 sm:grid-cols-3">
-            {["Kurumsal deneyim", "Teknik disiplin", "Referans proje"].map((item) => (
-              <div
-                key={item}
-                className="flex items-center gap-2 rounded-md bg-white/[0.055] px-4 py-3 text-sm font-semibold text-white/85"
-              >
-                <CheckCircle2
-                  size={18}
-                  className={isOngoing ? "text-emerald-400" : "text-ember"}
-                />
-                {item}
-              </div>
-            ))}
           </div>
         </div>
       </div>
