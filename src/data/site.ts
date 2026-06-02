@@ -40,7 +40,7 @@ const project = (
 export const site = {
   brand: "Metakent İnşaat",
   logo: "/logo-white.png",
-  fallbackLogo: "/logo.png",
+  fallbackLogo: "/logo-web.png",
   hero: {
     title: "Metakent İnşaat",
     subtitle:
@@ -275,8 +275,7 @@ export const site = {
         location: "Mustafa Kemal Paşa / Avcılar / İstanbul",
         description:
           "Ulaşım akslarına yakın konumu, aile yaşamına uygun planlaması, modern cephe dili ve güvenli yapı standardıyla geliştirilen özel konut projesi.",
-        image:
-          "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1200&q=80",
+        image: "/avcilar-konut-projesi.jpeg",
         mapUrl: mapUrl("Mustafa Kemal Paşa Avcılar İstanbul"),
         status: "Devam Ediyor",
         statusDetail: "Devam Eden Proje / 2028 Aralık"
@@ -305,7 +304,7 @@ export const site = {
     ],
     mapUrl: mapUrl("Mustafa Kemal Paşa Avcılar İstanbul"),
     gallery: [
-      "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1600&q=85",
+      "/avcilar-konut-projesi.jpeg",
       "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=900&q=80",
       "https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?auto=format&fit=crop&w=900&q=80",
       "https://images.unsplash.com/photo-1600607688969-a5bfcd646154?auto=format&fit=crop&w=900&q=80",
