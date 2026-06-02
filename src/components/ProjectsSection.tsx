@@ -204,35 +204,52 @@ function ProjectCard({ project, onSelect }: { project: Project; onSelect: () => 
   const isOngoing = project.status === "Devam Ediyor";
 
   return (
-    <article className="group w-[84vw] max-w-[420px] shrink-0 snap-start overflow-hidden rounded-md border border-white/10 bg-[#11141b] shadow-cinematic transition duration-300 hover:z-10 hover:scale-[1.025] hover:border-white/20 hover:shadow-2xl sm:w-[390px]">
-      <div className="relative h-56 overflow-hidden bg-graphite">
+    <article className="group relative h-[500px] w-[84vw] max-w-[390px] shrink-0 snap-start overflow-hidden rounded-md border border-white/10 bg-[#11141b] shadow-cinematic transition duration-300 hover:z-10 hover:border-white/20 hover:shadow-2xl sm:w-[370px]">
+      <div className="absolute inset-0 bg-graphite">
         <SafeImage
           src={project.image}
           alt={project.name}
-          sizes="(max-width: 640px) 84vw, 390px"
-          className="object-cover transition duration-500 group-hover:scale-110"
+          sizes="(max-width: 640px) 84vw, 370px"
+          className="object-cover transition duration-700 group-hover:scale-110"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
-        <span
-          className={`absolute left-4 top-4 rounded px-3 py-1 text-xs font-bold text-white ${
-            isOngoing ? "bg-emerald-600" : "bg-ember"
-          }`}
-        >
-          {project.status}
-        </span>
       </div>
+      <div className="absolute inset-0 bg-gradient-to-t from-black/82 via-black/25 to-black/10" />
+      <span
+        className={`absolute left-5 top-5 z-10 rounded px-3 py-1 text-xs font-bold text-white ${
+          isOngoing ? "bg-emerald-600" : "bg-ember"
+        }`}
+      >
+        {project.status}
+      </span>
 
-      <div className="p-5">
-        <h5 className="min-h-[3.25rem] text-base font-semibold leading-tight text-white sm:text-lg">
+      <div className="absolute inset-x-0 bottom-0 z-10 p-5 transition duration-500 sm:group-hover:-translate-x-6 sm:group-hover:opacity-0">
+        <p className="mb-3 text-[11px] font-bold uppercase tracking-[0.22em] text-gold">
+          {project.location}
+        </p>
+        <h5 className="text-2xl font-black leading-tight text-white drop-shadow-xl">
           {project.name}
         </h5>
-        <p className="mt-2 text-[11px] font-light leading-5 tracking-normal text-white/55">
+        <p className="mt-3 text-xs font-light leading-5 text-white/72">
+          - {project.info}
+        </p>
+      </div>
+      <div className="absolute bottom-0 right-0 z-20 w-[86%] translate-x-0 rounded-tl-md bg-white p-5 text-[#111318] shadow-2xl transition duration-500 sm:translate-x-[calc(100%-4.75rem)] sm:group-hover:translate-x-0">
+        <div className="mb-5 flex h-10 w-10 items-center justify-center rounded-full border border-[#c9b88c] text-[#a89056] transition group-hover:bg-[#a89056] group-hover:text-white">
+          <ArrowUpRight size={18} />
+        </div>
+        <p className="text-[11px] font-bold uppercase tracking-[0.25em] text-[#a89056]">
+          {isOngoing ? "Devam Eden Proje" : "Referans Proje"}
+        </p>
+        <h5 className="mt-4 text-xl font-black leading-tight text-[#151515]">
+          {project.name}
+        </h5>
+        <p className="mt-3 text-xs font-light leading-5 text-[#555]">
           - {project.info}
         </p>
         <button
           type="button"
           onClick={onSelect}
-          className="mt-5 inline-flex items-center gap-2 rounded-md border border-white/20 bg-white/10 px-4 py-2 text-sm font-bold text-white backdrop-blur transition hover:border-ember/50 hover:bg-ember"
+          className="mt-6 inline-flex items-center gap-2 rounded-md bg-[#111318] px-4 py-2 text-sm font-bold text-white transition hover:bg-ember"
         >
           Projeyi İncele
           <ArrowUpRight size={17} />
